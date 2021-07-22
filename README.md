@@ -4,6 +4,16 @@
 
     $ npm i --save @nestjs/microservices
 
+    or
+
+    $ yarn add @nestjs/microservices
+
 2 Kafkajs
 
     $ npm i --save kafkajs
+
+    or
+
+    $ yarn kafkajs
+
+
