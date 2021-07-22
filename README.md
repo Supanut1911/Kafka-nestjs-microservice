@@ -14,6 +14,13 @@
 
     or
 
-    $ yarn kafkajs
+    $ yarn add kafkajs
 
+---
 
+Kafka docker 
+
+    $ docker compose up
+
+** 
+    version lib of "@nestjs/core" must equal "@nestjs/microservices"
