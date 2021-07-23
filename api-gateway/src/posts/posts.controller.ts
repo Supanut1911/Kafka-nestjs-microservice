@@ -1,6 +1,7 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Patch, Post } from '@nestjs/common';
 import { Transport, Client, ClientKafka} from '@nestjs/microservices';
 import { IPost } from './interfaces/post.interface';
+// import {IUpdateDirector} from '../../../posts-service/src/posts/interfaces/post.interface'
 
 @Controller('posts')
 export class PostsController {
@@ -36,5 +37,18 @@ export class PostsController {
    @Get('/')
    getList() {
        return this.client.send('get.posts.list', '')
+   }
+
+   @Patch('/test')
+   test() {
+       return 'gogo'
+   }
+
+   @Post('/updateDirector')
+   updateDirector(
+    // @Body() data: IUpdateDirector
+   ) {
+    // return  this.client.send('update.director.post', data)
+    return 'hello'
    }
 }

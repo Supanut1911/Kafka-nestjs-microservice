@@ -1,9 +1,4 @@
+/full-stack
 node_modules/
-/full-stack/kafka1
-/full-stack/zoo1
-
-/full-stack/kafka1/
-/full-stack/zoo1/
-
-full-stack/kafka1/
-full-stack/zoo1/
+full-stack/
+../full-stack/

@@ -27,4 +27,15 @@ export class AppController {
     let messageRes = message.value.posts
     return this.movieService.getMoviesWithPost(messageRes)
   }
+
+  @MessagePattern('update.director')
+  async updateDirector(
+    @Payload() message
+  ) {
+    // let messageRes = message.value
+    console.log('at movie update.director =>', message);
+    
+    return 
+  }
+
 }

@@ -4,17 +4,17 @@ import { ClientKafka, ClientProxy } from '@nestjs/microservices';
 let movies = [
   {
     name: "Avatar",
-    director: "Jason N",
+    director: "Jason Nero",
     style: "SIFI"
   },
   {
     name: "The thing",
-    director: "Alice boom",
+    director: "Alice Boom",
     style: "Horror"
   },
   {
     name: "MrBean",
-    director: "Sabob",
+    director: "Sabob Zero",
     style: "Commady"
   },
 ]
@@ -53,5 +53,11 @@ export class AppService {
     console.log('getMoviesWithPost=>', x);
     
     return x
+  }
+
+  updateDirector(
+    data
+  ): void {
+
   }
 }

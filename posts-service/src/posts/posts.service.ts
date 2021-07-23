@@ -3,7 +3,7 @@ import { ClientKafka } from '@nestjs/microservices';
 // import { Producer } from '@nestjs/microservices/external/kafka-options.interface';
 import { Producer } from '@nestjs/microservices/external/kafka.interface';
 
-import { IPost } from './interfaces/post.interface';
+import { IPost, IUpdateDirector } from './interfaces/post.interface';
 
 @Injectable()
 export class PostsService implements OnModuleInit{
@@ -31,7 +31,6 @@ export class PostsService implements OnModuleInit{
     }
 
     async getList(
-
     ) {
         this.kafkaProducer.send({
             topic: 'postJa',
@@ -44,7 +43,37 @@ export class PostsService implements OnModuleInit{
                 }
             ]
         })
-
         return this.posts
     }
+
+    async updateMovieDirector(
+        payload: IUpdateDirector
+    ) {
+
+        // let directorsUpdate = [
+        //     {
+        //         movieName: 'The thing',
+        //         director: 'OB1 Kenobi',
+        //     },
+        //     {
+        //         movieName: 'MrBean',
+        //         director: 'Usan bolt',
+        //     },
+
+        // ]
+
+        this.kafkaProducer.send({
+            topic: 'update.director',
+            messages: [
+                {
+                    key: 'UPD' + Math.random(),
+                    value: JSON.stringify({
+                        payload: payload
+                    })
+                }
+            ]
+        })
+    }
+
+
 }

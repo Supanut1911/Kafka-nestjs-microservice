@@ -35,9 +35,8 @@ export class MoviesController {
  
     @Get('/')
     async getList() {
-        let postsRes = await this.client.emit('get.posts.list', '').toPromise()
-        console.log('xxxxxxxxxxpostsRes', postsRes)
-        
+        // let postsRes = await this.client.emit('get.posts.list', '').toPromise()
+        // console.log('xxxxxxxxxxpostsRes', postsRes)
         return this.client.send('get.movies.list', '')
     }
 
