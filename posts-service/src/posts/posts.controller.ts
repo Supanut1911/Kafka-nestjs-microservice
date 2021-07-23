@@ -1,5 +1,5 @@
-import { Controller } from '@nestjs/common';
-import { MessagePattern, Payload } from '@nestjs/microservices';
+import { Controller, Inject } from '@nestjs/common';
+import { ClientKafka, MessagePattern, Payload } from '@nestjs/microservices';
 import { IKafkaMessage } from 'src/interfaces/kafka-message.interface';
 import { IPost } from './interfaces/post.interface';
 import { PostsService } from './posts.service';
@@ -19,6 +19,8 @@ export class PostsController {
     addPost(
         @Payload() message: IKafkaMessage<IPost>
     ) {
+        console.log(message);
+        
         return this.postservice.addPost(message.value)
     }
 }
