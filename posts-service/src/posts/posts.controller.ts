@@ -28,7 +28,7 @@ export class PostsController {
     updateDirector(
         @Payload() message: IKafkaMessage<IUpdateDirector>
     ) {
-        console.log(message);
+        console.log('======>',message);
         
         return this.postservice.updateMovieDirector(message.value)
 

@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Patch, Post } from '@nestjs/common';
 import { Transport, Client, ClientKafka} from '@nestjs/microservices';
 import { IPost } from './interfaces/post.interface';
-// import {IUpdateDirector} from '../../../posts-service/src/posts/interfaces/post.interface'
+import {IUpdateDirector} from './interfaces/post.interface'
 
 @Controller('posts')
 export class PostsController {
@@ -22,7 +22,7 @@ export class PostsController {
    async onModuleInit() {
        this.client.subscribeToResponseOf('add.new.post')
        this.client.subscribeToResponseOf('get.posts.list')
-
+       this.client.subscribeToResponseOf('update.director.post')
        await this.client.connect()
    }
 
@@ -46,9 +46,9 @@ export class PostsController {
 
    @Post('/updateDirector')
    updateDirector(
-    // @Body() data: IUpdateDirector
+    @Body() data: IUpdateDirector
    ) {
-    // return  this.client.send('update.director.post', data)
-    return 'hello'
+    return  this.client.send('update.director.post', data)
+    // return 'hello'
    }
 }

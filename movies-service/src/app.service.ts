@@ -59,5 +59,13 @@ export class AppService {
     data
   ): void {
 
+    
+    let index = movies.findIndex( (e) => {
+      console.log('eee -->', e.name);
+      
+      return e.name == data.payload.movieName
+    })
+
+    movies[index].director = data.payload.director
   }
 }

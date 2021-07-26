@@ -35,7 +35,7 @@ export class AppController {
     // let messageRes = message.value
     console.log('at movie update.director =>', message);
     
-    return 
+    return this.movieService.updateDirector(message.value)
   }
 
 }

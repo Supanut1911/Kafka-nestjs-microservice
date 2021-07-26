@@ -7,3 +7,8 @@ export interface IMovie {
     director: string,
     style: string
 }
+
+export interface IUpdateDirector {
+    movieName: string,
+    director: string
+}
