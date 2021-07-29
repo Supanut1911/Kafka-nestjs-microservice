@@ -50,30 +50,19 @@ export class PostsService implements OnModuleInit{
         payload: IUpdateDirector
     ) {
 
-        // let directorsUpdate = [
-        //     {
-        //         movieName: 'The thing',
-        //         director: 'OB1 Kenobi',
-        //     },
-        //     {
-        //         movieName: 'MrBean',
-        //         director: 'Usan bolt',
-        //     },
-
-        // ]
-
-        this.kafkaProducer.send({
+        let x = await this.kafkaProducer.send({
             topic: 'update.director',
             messages: [
                 {
                     key: 'UPD' + Math.random(),
                     value: JSON.stringify({
                         payload: payload
-                    })
-                }
+                    }),
+                },
             ]
         })
+
+        console.log('xxxxxxxxx =>', x);
+        
     }
-
-
 }

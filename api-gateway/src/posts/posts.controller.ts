@@ -1,10 +1,14 @@
 import { Body, Controller, Get, Patch, Post } from '@nestjs/common';
 import { Transport, Client, ClientKafka} from '@nestjs/microservices';
+import { Kafka } from '@nestjs/microservices/external/kafka-options.interface';
 import { IPost } from './interfaces/post.interface';
 import {IUpdateDirector} from './interfaces/post.interface'
 
 @Controller('posts')
 export class PostsController {
+
+
+
    @Client({
        transport: Transport.KAFKA,
        options: {
@@ -18,12 +22,11 @@ export class PostsController {
        }
    })
    client: ClientKafka
-
    async onModuleInit() {
        this.client.subscribeToResponseOf('add.new.post')
        this.client.subscribeToResponseOf('get.posts.list')
        this.client.subscribeToResponseOf('update.director.post')
-       await this.client.connect()
+
    }
 
    @Post('/')
