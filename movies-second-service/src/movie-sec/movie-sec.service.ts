@@ -2,6 +2,11 @@ import { Injectable } from '@nestjs/common';
 
 let moviesSec = [
     {
+      "name": "Avatar",
+      "director": "OB1",
+      "style": "SIFI"
+    },
+    {
       name: "DOOM",
       director: "Jera nemo",
       style: "Action"
@@ -24,4 +29,18 @@ export class MovieSecService {
         return moviesSec
     }
 
+
+    updateDirector(
+      data
+    ): void {
+  
+      
+      let index = moviesSec.findIndex( (e) => {
+        console.log('eee -->', e.name);
+        
+        return e.name == data.payload.movieName
+      })
+  
+      moviesSec[index].director = data.payload.director
+    }
 }

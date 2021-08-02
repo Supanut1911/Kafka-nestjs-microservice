@@ -51,7 +51,7 @@ export class PostsService implements OnModuleInit{
     ) {
 
         let x = await this.kafkaProducer.send({
-            topic: 'update.director',
+            topic: 'update.directors',
             messages: [
                 {
                     key: 'UPD' + Math.random(),
