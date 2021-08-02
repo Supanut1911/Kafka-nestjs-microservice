@@ -19,6 +19,8 @@ export class MoviesecController {
 
     async onModuleInit() {
         this.client.subscribeToResponseOf('get.movies.sec.list')
+        this.client.subscribeToResponseOf('get.movies.sec.log')
+
         await this.client.connect()
     }
 
@@ -28,5 +30,10 @@ export class MoviesecController {
         
         return this.client.send('get.movies.sec.list', '')
         // return 'movies sec'
+    }
+
+    @Get('/movieseclog')
+    async getmovieseclog() {
+        return this.client.send('get.movies.sec.log', '')
     }
 }

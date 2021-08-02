@@ -1,5 +1,5 @@
 import { Controller } from '@nestjs/common';
-import { MessagePattern, Payload } from '@nestjs/microservices';
+import { MessagePattern, Payload, RpcException } from '@nestjs/microservices';
 import { MovieSecService } from './movie-sec.service';
 
 @Controller('movie-sec')
@@ -24,7 +24,18 @@ export class MovieSecController {
     ) {
       // let messageRes = message.value
       console.log('at movie update.director =>', message);
-      
-      return this.movieSECService.updateDirector(message.value)
+      try {
+        return this.movieSECService.updateDirector(message.value)
+      } catch (error) {
+        return {
+          status: '400',
+          message: `error cant update director, error: ${error}`
+        }
+      }
+    }
+
+    @MessagePattern('get.movies.sec.log')
+    getMoviesSecLog() {
+      return this.movieSECService.getLogMovieSecDirectorMessage()
     }
 }

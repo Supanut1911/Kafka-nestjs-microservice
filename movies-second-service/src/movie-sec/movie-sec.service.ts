@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
+import { RpcException } from '@nestjs/microservices';
 
 let moviesSec = [
     {
@@ -23,6 +24,8 @@ let moviesSec = [
     },
 ]
 
+let logMovies = []
+
 @Injectable()
 export class MovieSecService {
     getMoviesList(){
@@ -34,13 +37,19 @@ export class MovieSecService {
       data
     ): void {
   
-      
       let index = moviesSec.findIndex( (e) => {
         console.log('eee -->', e.name);
         
         return e.name == data.payload.movieName
       })
-  
-      moviesSec[index].director = data.payload.director
+        moviesSec[index].director = data.payload.director
+    }
+
+    getLogMovieSecDirectorMessage(
+
+    ) {
+      return {
+        movieLog: logMovies
+      }
     }
 }
