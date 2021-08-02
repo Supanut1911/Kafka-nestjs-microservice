@@ -24,6 +24,9 @@ export class MoviesecController {
 
     @Get('/')
     async getMoviesSecList() {
-        return 'movies sec'
+        console.log('here moviesec.controller');
+        
+        return this.client.send('get.movies.sec.list', '')
+        // return 'movies sec'
     }
 }
