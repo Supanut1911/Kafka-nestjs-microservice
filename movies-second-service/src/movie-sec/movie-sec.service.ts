@@ -31,6 +31,13 @@ let moviesSec = [
       "createAt": moment('2021-08-01').format(),
       "updateAt": "" 
     },
+    {
+      name: "MrBean",
+      director: "Sabob Zero",
+      style: "Commady",
+      "createAt": moment('2021-08-01').format(),
+      "updateAt": "" 
+    },
 ]
 
 let logMovies = []

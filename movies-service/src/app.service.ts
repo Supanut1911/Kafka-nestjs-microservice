@@ -1,25 +1,31 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientKafka, ClientProxy } from '@nestjs/microservices';
-
+import * as moment from 'moment'
 let movies = [
   {
     name: "Avatar",
     director: "Jason Nero",
-    style: "SIFI"
+    style: "SIFI",
+    "createAt": moment('2021-08-01').format(),
+    "updateAt": "" 
   },
   {
     name: "The thing",
     director: "Alice Boom",
-    style: "Horror"
+    style: "Horror",
+    "createAt": moment('2021-08-01').format(),
+    "updateAt": "" 
   },
   {
     name: "MrBean",
     director: "Sabob Zero",
-    style: "Commady"
+    style: "Commady",
+    "createAt": moment('2021-08-01').format(),
+    "updateAt": "" 
   },
 ]
 
-
+let logMovies = []
 
 @Injectable()
 export class AppService {
@@ -43,6 +49,7 @@ export class AppService {
     // return movies
   }
 
+
   getMoviesWithPost(
     message
   ) {
@@ -61,11 +68,24 @@ export class AppService {
 
     
     let index = movies.findIndex( (e) => {
-      console.log('eee -->', e.name);
-      
       return e.name == data.payload.movieName
     })
 
     movies[index].director = data.payload.director
+    movies[index].updateAt = moment().format()
+
+    //only insert
+    let newUpdateDirector = {
+      data: data.payload,
+      timeStamp: moment().format()
+    }
+    logMovies.push(newUpdateDirector)
+  }
+
+  getLogMoviesDirectorMessage() {
+    return {
+      moviesLog: logMovies
+    }
   }
 }
+

@@ -38,4 +38,10 @@ export class AppController {
     return this.movieService.updateDirector(message.value)
   }
 
+  @MessagePattern('get.movies.log')
+  getMoviesLog() {
+    return this.movieService.getLogMoviesDirectorMessage()
+  }
 }
+
+

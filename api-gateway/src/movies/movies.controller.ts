@@ -22,7 +22,8 @@ export class MoviesController {
         this.client.subscribeToResponseOf('add.new.movie')
         this.client.subscribeToResponseOf('get.movies.list')
         this.client.subscribeToResponseOf('get.posts.list')
-        // this.client.subscribeToResponseOf('postJa')
+        this.client.subscribeToResponseOf('get.movies.log')
+        
         await this.client.connect()
     }
 
@@ -43,5 +44,10 @@ export class MoviesController {
     @Get('/movieWithPost')
     async movieWithPost() {
         return this.client.send('postJa', '')
+    }
+
+    @Get('movielog')
+    async getMovieLog() {
+        return this.client.send('get.movies.log', '')
     }
 }
