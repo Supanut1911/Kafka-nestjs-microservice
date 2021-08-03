@@ -28,7 +28,7 @@ export class AppController {
     return this.movieService.getMoviesWithPost(messageRes)
   }
 
-  @MessagePattern('update.directors')
+  @MessagePattern('update.directorsX')
   async updateDirector(
     @Payload() message
   ) {

@@ -12,7 +12,7 @@ import { AppService } from './app.service';
         options: {
           client:{
             clientId: 'movies',
-            brokers: ['localhost:9092']
+            brokers: ['localhost:9092', 'localhost:9093']
           },
           consumer: {
             groupId: 'post-consumer'

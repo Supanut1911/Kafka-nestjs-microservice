@@ -18,7 +18,7 @@ export class MovieSecController {
       return this.movieSECService.getMoviesList()
     }
 
-    @MessagePattern('update.directors')
+    @MessagePattern('update.directorsX')
     async updateDirector(
       @Payload() message
     ) {
