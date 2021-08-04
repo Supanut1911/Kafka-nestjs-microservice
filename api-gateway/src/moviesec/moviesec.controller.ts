@@ -8,7 +8,13 @@ export class MoviesecController {
         options: {
             client: {
                 clientId: 'moviesSec',
-                brokers: ['localhost:9092', 'localhost:9093']
+                brokers: ['localhost:9092', 'localhost:9093'],
+                // ssl: true,
+                // sasl: {
+                //     mechanism: 'plain', // scram-sha-256 or scram-sha-512
+                //     username: 'test',
+                //     password: '123456'
+                //   },
             },
             consumer: {
                 groupId: 'movies-sec-consumer'
