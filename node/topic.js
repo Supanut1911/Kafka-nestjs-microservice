@@ -6,13 +6,13 @@ async function run() {
     try {
         const kafka = new Kafka({
             'clientId': 'myApp',
-            'brokers': ['localhost:9092'],
-            ssl: true,
-            sasl: {
-                mechanism: 'plain', // scram-sha-256 or scram-sha-512
-                username: 'test',
-                password: '123456'
-              },
+            'brokers': ['localhost:9092', 'localhost:9093'],
+            // ssl: true,
+            // sasl: {
+            //     mechanism: 'plain', // scram-sha-256 or scram-sha-512
+            //     username: 'test',
+            //     password: '123456's
+            //   },
         })
 
         const admin = kafka.admin()
