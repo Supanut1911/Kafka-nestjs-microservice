@@ -4,8 +4,8 @@ run()
 async function run() {
     try {
         const kafka = new Kafka({
-            'clientId': 'myApp',
-            'brokers': ['localhost:9092', 'localhost:9093'],
+            'clientId': 'my-consumer',
+            'brokers': ['localhost:9092', 'localhost:9095', 'localhost:9097'],
             // ssl: false,
             // sasl: {
             //     mechanism: 'plain', // scram-sha-256 or scram-sha-512
@@ -15,14 +15,14 @@ async function run() {
         })
 
         const consumer = kafka.consumer({
-            groupId: 'test'
+            groupId: 'my-consumer'
         })
         console.log('connecting..');
         await consumer.connect()
         console.log('connected!');
 
         consumer.subscribe({
-            'topic':'Users',
+            'topic':'users',
             'fromBeginning': true
         })
 

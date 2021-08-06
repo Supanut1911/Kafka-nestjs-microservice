@@ -5,13 +5,15 @@ run()
 async function run() {
     try {
         const kafka = new Kafka({
-            'clientId': 'myApp',
-            'brokers': ['localhost:9092', 'localhost:9093'],
-            // ssl: true,
+            'clientId': 'my-topic',
+            'brokers': ['localhost:9092', 'localhost:9095', 'localhost:9097'],    
+            // ssl: {
+            //     rejectUnauthorized: false,
+            // },
             // sasl: {
             //     mechanism: 'plain', // scram-sha-256 or scram-sha-512
             //     username: 'test',
-            //     password: '123456's
+            //     password: '123456'
             //   },
         })
 
@@ -23,8 +25,8 @@ async function run() {
         //A-M 1 , N-Z 0
         await admin.createTopics({
             'topics': [{
-                'topic': 'Users',
-                'numPartitions': 2
+                'topic': 'users',
+                'numPartitions': 3
             }]
         })
 

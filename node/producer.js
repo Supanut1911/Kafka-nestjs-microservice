@@ -5,8 +5,8 @@ run()
 async function run() {
     try {
         const kafka = new Kafka({
-            'clientId': 'myApp',
-            'brokers': ['localhost:9092', 'localhost:9093'],
+            'clientId': 'my-producer',
+            'brokers': ['localhost:9092', 'localhost:9095', 'localhost:9097'],
             // ssl: true,
             // sasl: {
             //     mechanism: 'plain', // scram-sha-256 or scram-sha-512
@@ -23,7 +23,7 @@ async function run() {
         //A-M 0, N-Z 1
         const patition = msg[0] < 'M' ? 0 : 1
         const result = await producer.send({
-            'topic': 'Users',
+            'topic': 'users',
             'messages': [
                 {
                     'value': msg,

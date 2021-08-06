@@ -14,7 +14,7 @@ export class PostsController {
        options: {
            client: {
                 clientId: 'posts',
-                brokers: ['localhost:9092', 'localhost:9093']
+                brokers: ['localhost:9092', 'localhost:9095', 'localhost:9097']
            },
            consumer: {
                groupId: 'posts-consumer'

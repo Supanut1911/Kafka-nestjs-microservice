@@ -7,7 +7,7 @@ async function bootstrap() {
     transport: Transport.KAFKA,
     options: {
       client:{
-        brokers: ['localhost:9092', 'localhost:9093']
+        brokers: ['localhost:9092', 'localhost:9095', 'localhost:9097']
       },
       consumer: {
         groupId: 'movies-sec-consumer'
