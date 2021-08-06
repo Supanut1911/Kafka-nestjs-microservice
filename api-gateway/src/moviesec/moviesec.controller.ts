@@ -8,7 +8,8 @@ export class MoviesecController {
         options: {
             client: {
                 clientId: 'moviesSec',
-                brokers: ['localhost:9092', 'localhost:9095', 'localhost:9097'],
+                // brokers: ['localhost:9092', 'localhost:9095', 'localhost:9097'],
+                brokers: ['localhost:9092'],
                 // ssl: true,
                 // sasl: {
                 //     mechanism: 'plain', // scram-sha-256 or scram-sha-512

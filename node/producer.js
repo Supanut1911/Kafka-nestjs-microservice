@@ -6,7 +6,8 @@ async function run() {
     try {
         const kafka = new Kafka({
             'clientId': 'my-producer',
-            'brokers': ['localhost:9092', 'localhost:9095', 'localhost:9097'],
+            // 'brokers': ['localhost:9092', 'localhost:9095', 'localhost:9097'],
+            'brokers': ['kafka:9092'],    
             // ssl: true,
             // sasl: {
             //     mechanism: 'plain', // scram-sha-256 or scram-sha-512

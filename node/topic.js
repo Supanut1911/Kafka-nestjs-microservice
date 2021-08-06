@@ -6,7 +6,9 @@ async function run() {
     try {
         const kafka = new Kafka({
             'clientId': 'my-topic',
-            'brokers': ['localhost:9092', 'localhost:9095', 'localhost:9097'],    
+            // 'brokers': ['localhost:9092', 'localhost:9095', 'localhost:9097'],    
+            'brokers': ['localhost:9092'],    
+
             // ssl: {
             //     rejectUnauthorized: false,
             // },
