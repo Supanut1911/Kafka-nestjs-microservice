@@ -2,8 +2,9 @@ import { Inject, Injectable, OnModuleInit } from '@nestjs/common';
 import { ClientKafka } from '@nestjs/microservices';
 // import { Producer } from '@nestjs/microservices/external/kafka-options.interface';
 import { Producer } from '@nestjs/microservices/external/kafka.interface';
-
 import { IPost, IUpdateDirector } from './interfaces/post.interface';
+import * as moment from 'moment'
+
 
 @Injectable()
 export class PostsService implements OnModuleInit{
@@ -47,7 +48,8 @@ export class PostsService implements OnModuleInit{
     }
 
     async updateMovieDirector(
-        payload: IUpdateDirector
+        payload: IUpdateDirector,
+
     ) {
 
         let x = await this.kafkaProducer.send({
@@ -55,6 +57,7 @@ export class PostsService implements OnModuleInit{
             messages: [
                 {
                     key: 'UPD' + Math.random(),
+                    'timestamp': `${Date.now()}`,
                     value: JSON.stringify({
                         payload: payload
                     }),
